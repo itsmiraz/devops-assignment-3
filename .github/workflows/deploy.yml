@@ -7,7 +7,7 @@ on:
 
 jobs:
   test:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -16,6 +16,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "18"
+
       - name: Install Dependencies
         run: npm install
 
@@ -54,6 +55,14 @@ jobs:
 
           echo "Here are the build Artifacts----------"
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+
+      - name: Install Dependencies
+        run: npm install
+
       - name: Ensure PM2 is installed
         run: |
           if (-not (Get-Command pm2 -ErrorAction SilentlyContinue)) {
@@ -72,4 +81,3 @@ jobs:
 
            pm2 save
            pm2 status
-           pm2 logs node-app
