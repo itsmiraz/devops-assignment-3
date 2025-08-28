@@ -1,20 +1,3 @@
-## Prerequisites
-
-- Node Version 22
-
-### 1. For Run This Applications
-
-```bash
-# install packages
-npm install
-
-# Testing The Applications
-npm run check
-
-# For Run the application
-npm start
-```
-
 ## CI/CD — Challenges & Solutions
 
 ### 1) Action reference typos
@@ -48,6 +31,27 @@ npm start
 - `actions/setup-node@v4`
 - `npm ci --omit=dev` (or `npm install`)  
   **Evidence:** PM2 shows `node-app` online and the workflow completes without errors.
+
+``
+
+``
+
+## Prerequisites
+
+- Node Version 22
+
+### 1. For Run This Applications
+
+```bash
+# install packages
+npm install
+
+# Testing The Applications
+npm run check
+
+# For Run the application
+npm start
+```
 
 ### Deployment Process
 
