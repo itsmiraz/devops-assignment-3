@@ -31,7 +31,7 @@ jobs:
 
   deploy:
     needs: test
-    runs-on: [self-hosted, linux, X64]
+    runs-on: self-hosted
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
