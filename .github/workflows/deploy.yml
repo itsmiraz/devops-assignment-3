@@ -47,7 +47,12 @@ jobs:
           path: ./artifacts
 
       - name: Display Test Results
-        run: cat ./artifacts/test-results.txt
+        run: |
+          echo "Here are the build Artifacts----------"
+
+          cat ./artifacts/test-results.txt
+
+          echo "Here are the build Artifacts----------"
 
       - name: Ensure PM2 is installed
         run: |
