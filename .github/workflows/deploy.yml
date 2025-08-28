@@ -51,15 +51,19 @@ jobs:
 
       - name: Ensure PM2 is installed
         run: |
-          if ! command -v pm2 >/dev/null 2>&1; then
-            npm i -g pm2
-          fi
+          if (-not (Get-Command pm2 -ErrorAction SilentlyContinue)) {
+          npm i -g pm2
+          }
+          pm2 -v
 
       - name: Deploy with PM2
         run: |
-          # Clean up any existing process (as per README)
-          pm2 delete node-app || true
-          # Start using absolute/relative path as in your README
-          pm2 start "./src/server.js" --name node-app
-          pm2 save
-          pm2 status
+          # Remove existing process if present (ignore error)
+           pm2 delete node-app
+           if ($LASTEXITCODE -ne 0) { Write-Host "No existing PM2 process named node-app" }
+
+           # Start app (adjust path if needed; .\ or ./ both work in pwsh)
+           pm2 start ".\src\server.js" --name node-app
+
+           pm2 save
+           pm2 status
