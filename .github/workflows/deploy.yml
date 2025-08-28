@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/checkout@v3
+        uses: actions/setup-node@v4
         with:
           node-version: "18"
       - name: Install Dependencies
@@ -24,7 +24,7 @@ jobs:
           npm run check> test.results.txt || true
 
       - name: Upload Test Results
-        uses: action/upload-artifact@v3
+        uses: action/upload-artifact@v4
         with:
           name: test-results
           path: test-results.txt
@@ -34,15 +34,15 @@ jobs:
     runs-on: [self-hosted, linux, X64]
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Nodejs.
-        uses: actions/setup-nodejs@v3
+        uses: actions/setup-node@v4
         with:
           node-version: "18"
 
       - name: Download the TEST Results
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: test-results
           path: ./artifacts
