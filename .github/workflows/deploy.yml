@@ -72,3 +72,4 @@ jobs:
 
            pm2 save
            pm2 status
+           pm2 logs node-app
